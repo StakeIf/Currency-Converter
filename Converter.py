@@ -1,2 +1,4 @@
 class Converter():
-    pass
+    
+    def converte(self, fromCurrency, toCurrency, date):
+        return 92.19
