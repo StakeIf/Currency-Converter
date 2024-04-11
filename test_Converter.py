@@ -28,3 +28,14 @@ class ConverterTests(unittest.TestCase):
         
         expected = 92.36
         self.assertEqual(result, expected)
+
+    def test_converte_EURtoRUB20240401_9896(self):
+        converter = Converter()
+        fromCurrency = 'EUR'
+        toCurrency = 'RUB'
+        date = '2024-04-10'
+
+        result = converter.converte(fromCurrency, toCurrency, date)
+        
+        expected = 98.96
+        self.assertEqual(result, expected)
