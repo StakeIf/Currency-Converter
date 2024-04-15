@@ -81,3 +81,25 @@ class ConverterTests(unittest.TestCase):
         
         expected = 276
         self.assertEqual(result, expected)
+
+    def test_calculate_18mul05_9(self):
+        converter = Converter()
+        rate = 18
+        value = 0.5
+
+        result = converter.calculate(rate, value)
+        
+        expected = 9
+        self.assertEqual(result, expected)
+
+    def test_calculate_negative_error(self):
+        converter = Converter()
+        rate = -18
+        value = -0.5
+
+        result = converter.calculate(rate, value)
+        
+        expected = 'error'
+        self.assertEqual(result, expected)
+
+    

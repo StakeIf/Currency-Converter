@@ -13,4 +13,6 @@ class Converter():
         return [92.15, 92.13, 92.11]
     
     def calculate(self, rate, value):
-        return 276
+        if (rate < 0 or value < 0):
+            return 'error'
+        return rate * value
