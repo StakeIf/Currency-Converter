@@ -69,11 +69,7 @@ class Converter():
 
 
     def actionPrediction(self, fromCurrency, toCurrency, amountDays):
-        current_date = datetime.date.today().isoformat()
-        one_day =  datetime.timedelta(days=1)
-
         datesAfterToday = []
-
         rates = []
 
         for i in range(9, -1, -1):
@@ -90,3 +86,15 @@ class Converter():
 
         for i in range(0, amountDays):
             print(datesAfterToday[i], ':', result[i])
+
+    def actionHistory(self, fromCurrency, toCurrency, amountDays):
+        datesBeforeToday = []
+        rates = []
+
+        for i in range(amountDays, 0, -1):
+            day = (datetime.date.today() - datetime.timedelta(days=i)).isoformat()
+            datesBeforeToday.append(day)
+            rates.append(self.converte(fromCurrency, toCurrency, day))
+
+        for i in range(0, amountDays):
+            print(datesBeforeToday[i], ':', rates[i])
