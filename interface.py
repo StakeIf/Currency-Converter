@@ -1,3 +1,7 @@
+from Converter import Converter
+
+converter = Converter()
+
 print('1. Узнать курс на сегодня')
 print('2. Предсказать курс')
 
@@ -12,9 +16,12 @@ if action == 1:
     print('Валюта2 - в какую валюту конвертировать')
     print('Список доступных валют: RUB, USD, EUR')
 
-    x = input('\nx: ')
+    value = input('\nx: ')
     fromCurrency =  input('Валюта1: ')
     toCurrency = input('Валюта2: ')
+
+    print('Текущий курс: ', converter.actionConverte(int(value), fromCurrency, toCurrency))
+
 else:
     print('\nСписок доступных валют: RUB, USD, EUR')
 

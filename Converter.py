@@ -49,13 +49,9 @@ class Converter():
         current_date = datetime.date.today().isoformat()
         rate = self.converte(fromCurrency, toCurrency, current_date)
         result = self.calculate(rate, value)
-        print(result)
+        return result
 
 
     def actionPrediction(self, fromCurrency, toCurrency, amountDays):
         pass
-
-converter = Converter()
-
-converter.actionConverte(2, 'USD', 'RUB')
 
