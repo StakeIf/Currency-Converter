@@ -39,3 +39,14 @@ class ConverterTests(unittest.TestCase):
         
         expected = 98.96
         self.assertEqual(result, expected)
+
+    
+    def test_prediction_fewExchangeRates(self):
+        converter = Converter()
+        exchangeRates = [81, 82, 83]
+        amountDays = 5
+
+        result = converter.prediction(exchangeRates, amountDays)
+        
+        expected = 'error'
+        self.assertEqual(result, expected)
