@@ -33,7 +33,7 @@ class ConverterTests(unittest.TestCase):
         converter = Converter()
         fromCurrency = 'EUR'
         toCurrency = 'RUB'
-        date = '2024-04-10'
+        date = '2024-04-01'
 
         result = converter.converte(fromCurrency, toCurrency, date)
         
