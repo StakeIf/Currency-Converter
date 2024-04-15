@@ -8,5 +8,5 @@ class Converter():
         return 92.36
 
     def prediction(self, exchangeRates, amountDays):
-        if len(exchangeRates) < 10:
+        if len(exchangeRates) != 10:
             return 'error'
