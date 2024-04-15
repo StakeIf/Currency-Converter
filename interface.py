@@ -27,4 +27,6 @@ else:
 
     fromCurrency =  input('\nДля какой валюты предсказать курс: ')
     toCurrency =  input('Предсказать курс относительно какой валюты: ')
-    amoutDays = input('На сколько дней вперед предсказать (до 10): ')
+    amountDays = input('На сколько дней вперед предсказать (до 10): ')
+
+    converter.actionPrediction(fromCurrency, toCurrency, int(amountDays))

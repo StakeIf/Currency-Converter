@@ -46,7 +46,7 @@ class Converter():
         days = np.array([x for x in range(0, amountExchangeRates)])
         dayswanted = np.array([ x for x in range( 0, amountExchangeRates + amountDays)])
 
-        extrapolator = UnivariateSpline( days, exchangeRates, k=2 )
+        extrapolator = UnivariateSpline( days, exchangeRates, k=1 )
         y = extrapolator( dayswanted )
         result = []
 
@@ -69,4 +69,24 @@ class Converter():
 
 
     def actionPrediction(self, fromCurrency, toCurrency, amountDays):
-        pass
+        current_date = datetime.date.today().isoformat()
+        one_day =  datetime.timedelta(days=1)
+
+        datesAfterToday = []
+
+        rates = []
+
+        for i in range(9, -1, -1):
+            day = (datetime.date.today() - datetime.timedelta(days=i)).isoformat()
+            rates.append(self.converte(fromCurrency, toCurrency, day))
+
+        for i in range(1, amountDays+1):
+            day = (datetime.date.today() + datetime.timedelta(days=i)).isoformat()
+            datesAfterToday.append(day)
+
+        result = self.prediction(rates, amountDays)
+
+        print("Текущий курс:", rates[9])
+
+        for i in range(0, amountDays):
+            print(datesAfterToday[i], ':', result[i])
