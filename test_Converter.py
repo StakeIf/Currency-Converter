@@ -71,6 +71,15 @@ class ConverterTests(unittest.TestCase):
         expected = [92.15, 92.13, 92.11]
         self.assertEqual(result, expected)
 
+    def test_prediction_2(self):
+        converter = Converter()
+        exchangeRates = [92, 87, 90, 91, 91, 93, 92, 89, 90, 88]
+        amountDays = 5
+
+        result = converter.prediction(exchangeRates, amountDays)
+        
+        expected = [86.11, 83.97, 81.5, 78.72, 75.62]
+        self.assertEqual(result, expected)
     
     def test_calculate_92mul3_276(self):
         converter = Converter()

@@ -2,6 +2,9 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 
+import numpy as np
+from scipy.interpolate import UnivariateSpline
+
 class Converter():
     def renameCurrency(self, currency):
         if currency == 'EUR':
@@ -37,7 +40,20 @@ class Converter():
     def prediction(self, exchangeRates, amountDays):
         if len(exchangeRates) != 10:
             return 'error'
-        return [92.15, 92.13, 92.11]
+        
+        amountExchangeRates = len(exchangeRates)
+
+        days = np.array([x for x in range(0, amountExchangeRates)])
+        dayswanted = np.array([ x for x in range( 0, amountExchangeRates + amountDays)])
+
+        extrapolator = UnivariateSpline( days, exchangeRates, k=2 )
+        y = extrapolator( dayswanted )
+        result = []
+
+        for i in range(amountExchangeRates, amountExchangeRates+amountDays):
+            result.append(round(y[i], 2))
+
+        return result
     
     def calculate(self, rate, value):
         if (rate < 0 or value < 0):
@@ -54,4 +70,3 @@ class Converter():
 
     def actionPrediction(self, fromCurrency, toCurrency, amountDays):
         pass
-
